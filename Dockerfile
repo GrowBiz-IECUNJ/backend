@@ -1,11 +1,15 @@
-ARG PYTHON_VERSION=3.11-slim-bullseye
+ARG PYTHON_VERSION=3.11-slim-buster
 
 FROM python:${PYTHON_VERSION}
 
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
+RUN apt-get update && apt-get install -y libpq-dev gcc
+
 RUN mkdir -p /code
+
+COPY config.ini /code/config.ini
 
 WORKDIR /code
 
