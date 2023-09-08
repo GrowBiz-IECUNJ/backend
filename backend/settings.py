@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-0*h)g)h4a0n&$&6+b#3-b7*u-ipwy$+^n^hf&tenafymj0^xxu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["growbiz-api.fly.dev"]
 
 
 # SIMPLE_JWT: A constant with the expiration of the access and refresh token.
