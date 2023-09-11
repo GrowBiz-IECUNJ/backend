@@ -11,7 +11,7 @@ env:
 
 jobs:
   Deploy-To-Production:
-    name: Development Deployment
+    name: Production Deployment
     runs-on: ubuntu-22.04
     
     steps:
