@@ -1,0 +1,32 @@
+name: Production Deployment Workflow
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  PROD_CONFIG_FILE: ${{ secrets.PROD_CONFIG_FILE }}
+  FLY_PROD_DEPLOYMENT_TOKEN: ${{ secrets.FLY_PROD_DEPLOYMENT_TOKEN }}
+
+jobs:
+  Deploy-To-Production:
+    name: Development Deployment
+    runs-on: ubuntu-22.04
+    
+    steps:
+      - name: Checkout Sources
+        uses: actions/checkout@v3
+
+      - name: Insert Config File
+        run: echo $PROD_CONFIG_FILE > config.ini
+
+      - name: Setup Fly CLI
+        uses: superfly/flyctl-actions/setup-flyctl@master
+        with:
+          version: 0.1.90
+
+      - name: Deploy to Fly.io
+        run: fly deploy --remote-only
+        env:
+          FLY_API_TOKEN: $FLY_PROD_DEPLOYMENT_TOKEN
