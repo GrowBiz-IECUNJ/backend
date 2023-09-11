@@ -5,7 +5,12 @@ from .models import Post, Reply
 class ReplySerializer(serializers.ModelSerializer):
     class Meta:
         model = Reply
-        fields = ['id', 'post', 'content', 'created_at', ]
+        fields = [
+            "id",
+            "post",
+            "content",
+            "created_at",
+        ]
 
     def create(self, validated_data):
         return super().create(validated_data)
@@ -17,8 +22,7 @@ class ForumSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ['id', 'title', 'content', 'created_at',
-                  'replies']
+        fields = ["id", "title", "content", "created_at", "total_likes", "replies"]
 
     # def get_likes_count(self, obj):
     #     return obj.likes.count()

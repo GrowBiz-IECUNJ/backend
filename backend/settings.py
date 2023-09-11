@@ -37,8 +37,9 @@ SECRET_KEY = "django-insecure-0*h)g)h4a0n&$&6+b#3-b7*u-ipwy$+^n^hf&tenafymj0^xxu
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ["growbiz-api.fly.dev"]
+# ALLOWED_HOSTS = ["growbiz-api.fly.dev"]
 
+ALLOWED_HOSTS = ["*"]
 
 # SIMPLE_JWT: A constant with the expiration of the access and refresh token.
 SIMPLE_JWT = {
@@ -67,6 +68,7 @@ INSTALLED_APPS = [
     "user",
     "cloudinary",
     "cloudinary_storage",
+    "corsheaders",
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
@@ -85,7 +87,7 @@ CORS_ALLOW_HEADERS = [
     "pragma",
 ]
 
-CSRF_ALLOWED_ORIGINS = ["http://localhost:8000"]
+CSRF_ALLOWED_ORIGINS = ["http://localhost:3000", "http://localhost:8000"]
 CSRF_TRUSTED_ORIGINS = ["http://localhost:8000"]
 
 REST_FRAMEWORK = {
@@ -99,15 +101,16 @@ REST_FRAMEWORK = {
     ],
 }
 
+CORS_ORIGIN_ALLOW_ALL = True
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
-    "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = "backend.urls"
