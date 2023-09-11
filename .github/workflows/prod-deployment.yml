@@ -7,7 +7,6 @@ on:
 
 env:
   PROD_CONFIG_FILE: ${{ secrets.PROD_CONFIG_FILE }}
-  FLY_PROD_DEPLOYMENT_TOKEN: ${{ secrets.FLY_PROD_DEPLOYMENT_TOKEN }}
 
 jobs:
   Deploy-To-Production:
@@ -29,4 +28,4 @@ jobs:
       - name: Deploy to Fly.io
         run: flyctl deploy --remote-only
         env:
-          FLY_API_TOKEN: $FLY_PROD_DEPLOYMENT_TOKEN
+          FLY_API_TOKEN: ${{ secrets.FLY_PROD_DEPLOYMENT_TOKEN }}
