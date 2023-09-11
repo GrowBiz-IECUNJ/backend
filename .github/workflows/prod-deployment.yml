@@ -27,6 +27,6 @@ jobs:
           version: 0.1.90
 
       - name: Deploy to Fly.io
-        run: fly deploy --remote-only
+        run: flyctl deploy --remote-only
         env:
           FLY_API_TOKEN: $FLY_PROD_DEPLOYMENT_TOKEN
