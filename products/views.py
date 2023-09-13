@@ -37,6 +37,17 @@ class ProductListAPIView(generics.ListAPIView):
             )
 
 
+class ProductsDetail(generics.ListAPIView):
+    serializer_class = ProductSerializer
+
+    def get_queryset(self):
+        # Retrieve the product ID from the URL
+        product_id = self.kwargs["id"]
+
+        # Get the lessons associated with the specified lesson
+        return Product.objects.filter(id=product_id)
+
+
 class ProductDetail(generics.RetrieveUpdateDestroyAPIView):
     def patch(self, request, pk):
         try:
