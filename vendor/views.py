@@ -5,11 +5,21 @@ from .serializers import VendorSerializer
 from rest_framework.permissions import IsAuthenticated
 
 
-class VendorListAPIView(generics.ListAPIView):
+class VendorListAPIView(generics.ListAPIView, generics.DestroyAPIView):
     # permission_classes = [IsAuthenticated, ]
 
     queryset = Vendor.objects.all()
     serializer_class = VendorSerializer
+    print("masuk")
+
+    def deletel(request, pk):
+        print("masuk rsa")
+        try:
+            instance = Vendor.objects.get(pk=pk)
+            instance.delete()
+            return Response(status=status.HTTP_204_NO_CONTENT)
+        except Vendor.DoesNotExist:
+            return Response(status=status.HTTP_404_NOT_FOUND)
 
     def post(self, request):
         try:
