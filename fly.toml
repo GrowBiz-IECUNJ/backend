@@ -10,7 +10,7 @@ console_command = "/code/manage.py shell"
 [build]
 
 [deploy]
-  release_command = "python manage.py migrate"
+  release_command = "bash -c \"python manage.py migrate && python manage.py collectstatic --no-input\""
 
 [env]
   PORT = "8000"
