@@ -87,8 +87,8 @@ CORS_ALLOW_HEADERS = [
     "pragma",
 ]
 
-CSRF_ALLOWED_ORIGINS = ["http://localhost:3000", "http://localhost:8000"]
-CSRF_TRUSTED_ORIGINS = ["http://localhost:8000", "http://localhost:3000"]
+CSRF_ALLOWED_ORIGINS = ["http://localhost:3000", "http://localhost:8000", "https://growbiz-api.fly.dev"]
+CSRF_TRUSTED_ORIGINS = ["http://localhost:8000", "http://localhost:3000", "https://growbiz-api.fly.dev"]
 
 REST_FRAMEWORK = {
     "DEFAULT_RENDERER_CLASSES": ("rest_framework.renderers.JSONRenderer",),
