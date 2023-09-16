@@ -87,6 +87,15 @@ CORS_ALLOW_HEADERS = [
     "pragma",
 ]
 
+CORS_ALLOW_METHODS = (
+    "DELETE",
+    "GET",
+    "OPTIONS",
+    "PATCH",
+    "POST",
+    "PUT",
+)
+
 CSRF_ALLOWED_ORIGINS = ["http://localhost:3000", "http://localhost:8000", "https://growbiz-api.fly.dev"]
 CSRF_TRUSTED_ORIGINS = ["http://localhost:8000", "https://growbiz-api.fly.dev"]
 
